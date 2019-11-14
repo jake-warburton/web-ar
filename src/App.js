@@ -1,26 +1,25 @@
-import React from 'react';
-import logo from './logo.svg';
-import './App.css';
+import React, { Component } from "react";
 
-function App() {
+import { AFrameRenderer, Marker } from "react-web-ar";
+
+/**
+ * webcam is the default source type for analysing the marker
+ */
+
+export default function App() {
   return (
-    <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
-    </div>
+    <AFrameRenderer inherent={true}>
+      <Marker parameters={{ preset: "hiro" }}>
+        <a-box color="blue" position="0 0.09 0" scale="0.4 0.8 0.8">
+          <a-animation
+            attribute="rotation"
+            to="360 0 0"
+            dur="2000"
+            easing="linear"
+            repeat="indefinite"
+          />
+        </a-box>
+      </Marker>
+    </AFrameRenderer>
   );
 }
-
-export default App;
